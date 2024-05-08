@@ -2,6 +2,18 @@
 #include <stdlib.h> /* per la funzione atoi:  conversione stringa-numero */
 
 /*
+    str2num: converte una stringa nel formato "+####..." ovvero "-####..." ovvero "###..."
+             nel corrispondente numero intero (# è un carattere numerico). 
+             Restituisce un errore in caso di fallimento
+    
+    Args:   str, la stringa da convertire
+
+    Returns: num, il numero intero risultato
+
+    Pre:    str deve essere stata allocata e inizializzata
+*/
+
+/*
     get_int: acquisice un intero inserito dall'utente e ne 
     verifica il formato e l'appartenenza ad un intervallo dato
 
@@ -19,10 +31,9 @@ int get_int(int n_min, int n_max);
     oppure "-####" e restituisce il valore intero corrispondente
 
     Args: str (char* ) la stringa da convertire
-
-    Returns: num (int) il numero convertito
+          num (int *) il numero convertito passato per indirizzo
 */
-int check_int(char *str);
+void check_int(char *str, int *num);
 
 /* 
     Il programma sarà invocato con un comando: intervallo <numero minimo> <numero massimo>
@@ -32,8 +43,8 @@ int main(int argc, char* argv[]){
     /* l'intero da stampare e i due estremi dell'intervallo */
     int n_val, n_min, n_max;
 
-    n_min = check_int(argv[1]);
-    n_max = check_int(argv[2]);
+    check_int(argv[1], &n_min);
+    check_int(argv[2], &n_max);
 
     n_val = get_int(n_min, n_max);
 
@@ -43,15 +54,15 @@ int main(int argc, char* argv[]){
 }
 
 
-int check_int(char *str){
+void check_int(char *str, int *num){
 
-    int num = atoi(str);
+    *num = atoi(str);
 
     /* Verifica che la conversione sia corretta o meno */
-    if(num == 0 && str != "0")
-        return EOF;        /* risultato in caso di errore */
-    else
-        return num;             /* risultato corretto */
+    if(*num == 0 && str != "0"){
+        printf("Errore nei parametri da linea di comando > %s",str);
+        exit(-1);
+    }
 }
 
 int get_int(int n_min, int n_max){
