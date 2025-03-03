@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "name": "C/C++: gcc compilare ed eseguire il debug del file attivo",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "lldb",
+            "existing": false,
+            "preLaunchTask": "C/C++: gcc compila il file attivo",
+            "detail": "preLaunchTask: C/C++: gcc compila il file attivo",
+            "taskDetail": "Attività generata dal debugger.",
+            "taskStatus": "Recently Used Task",
+            "isDefault": true
+        }
+    ]
+}

@@ -1,0 +1,5 @@
+{
+    "C_Cpp.legacyCompilerArgsBehavior": true,
+    "C_Cpp.vcFormat.indent.lambdaBracesWhenParameter": false,
+    "cmake.configureOnOpen": false
+}
