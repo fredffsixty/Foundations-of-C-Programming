@@ -29,7 +29,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-#define LETTERS 26
+#define LETTERS /* Q1: determinare il numero corretto di lettere per l'alfabeto inglese*/
 
 /*
     hist:       calcola l'istogramma, analizzando iterativamente ogni 
@@ -46,7 +46,8 @@
                 predefinita pari al numero delle lettere dell'alfabeto definito
                 nella costante LETTERS
 
-    Pre:        f deve essere già aperto in lettura*/
+    Pre:        f deve essere già aperto in lettura
+*/
 int *hist(FILE *f);
 
 int main(int argc, char *argv[]){
@@ -56,15 +57,11 @@ int main(int argc, char *argv[]){
     /* vettore che contiene l'istogramma */
     int *istogramma;
 
-    if(argc != 2){
-        printf("Errore negli argomenti\nSintassi: text <nome file>\n\n");
-        return 0;
-    }
-
-    if((infp=fopen(argv[1],"r")) == NULL){
-        printf("File %s non trovato!\n\n",argv[1]);
-        return 0;
-    }
+    /*
+        Q1: gestire gli argomenti da linra di comando verificando che siano 
+            del numero corretto e che il file esista inviando all'utente un apposito
+            messaggio di errore per ognuma delle due eventualità
+    */
 
     /*
     Calcola l'istogramma e lo restituisce al main
@@ -74,28 +71,17 @@ int main(int argc, char *argv[]){
     /*
     Stampa dei risultati
     */
-    for(int i = 0 ; i < LETTERS; i++)
-        if(istogramma[i] != 0)
-            printf("%c: %d\n",'a'+ i,istogramma[i]);
+   /*
+        Q2: stampa dei soli valori diversi da 0 secondo il formato riportato
+            nelcommento in testa al codice
+   */
 
     return 0;
 }
 
 int *hist(FILE *f){
 
-    char buf;
-    int *h = calloc(LETTERS, sizeof(int));
-
-    do {
-        buf = fgetc(f);
-
-        if(isalpha(buf)){
-            buf = tolower(buf);
-
-            h[buf - 'a']++;
-        }
-
-    } while(!feof(f));
-
-    return h;
+    /*
+        Q3: implementare il codice della funzione secondo quanto richiesto
+    */
 }
